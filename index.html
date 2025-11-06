@@ -10,24 +10,32 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://soyacincau.com/wp-content/uploads/2024/07/240719-xiaomi-su7-ultra-prototype-04.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             color: #333;
+            position: relative; /* 确保内容在视频上方 */
+            min-height: 100vh;
+        }
+
+        /* 视频背景样式 */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 铺满屏幕并保持比例 */
+            z-index: -1; /* 置于内容下方 */
         }
 
         header {
-            background-color: rgba(255, 103, 0, 0.7); /* Semi-transparent orange background */
+            background-color: rgba(255, 103, 0, 0.7);
             color: white;
             padding: 20px;
             text-align: center;
             position: relative;
         }
 
-        /* New: Set NICHOLAS title to black */
         #main-title {
-            color: #000000; /* Black color */
+            color: #000000;
         }
 
         .language-selector {
@@ -48,13 +56,13 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Light transparent white background */
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         h1, h2 {
-            color: #ff6700; /* Original orange (only affects other headings now) */
+            color: #ff6700;
         }
 
         img {
@@ -82,14 +90,19 @@
             text-decoration: underline;
         }
 
-        .dark-mode {
-            background-color: #121212;
+        /* 主题切换兼容视频背景 */
+        .dark-mode section {
+            background-color: rgba(30, 30, 30, 0.8);
             color: white;
         }
 
-        .light-mode {
-            background-color: #ffffff;
-            color: #000000;
+        .dark-mode {
+            color: white;
+        }
+
+        .light-mode section {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
         }
 
         .theme-switcher {
@@ -111,7 +124,6 @@
             background-color: #ff6700;
         }
 
-        /* Highlight certifications for better readability */
         .certification {
             font-weight: 600;
             color: #ff6700;
@@ -119,6 +131,13 @@
     </style>
 </head>
 <body>
+    <!-- 视频背景（放在最顶部） -->
+    <video class="background-video" autoplay loop muted playsinline>
+        <source src="https://rr3---sn-5hneknes.googlevideo.com/videoplayback?expire=1762422293&ei=tRkMaYO_Js216dsPi-WQ0Qs&ip=2a11%3Aa685%3Ad9b7%3Ad4a%3A1c41%3A2e31%3Af2cc%3A9a1&id=o-AEvWMQ6oCgDFYQTgYo8zKaesUPWusie_gmSnIkcMEZSo&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&cps=0&met=1762400693%2C&mh=-S&mm=31%2C29&mn=sn-5hneknes%2Csn-5hne6n6l&ms=au%2Crdu&mv=m&mvi=3&pl=36&rms=au%2Cau&initcwndbps=8907500&bui=AdEuB5TnFSflRQlNvnxobtKtDctIThNVmkIcmnPHLTmxFKo5axRZMNyPBotTIO1VsNmn7kwzXAEDISGi&spc=6b0G_NmDUM1L1RSdhoQI&vprv=1&svpuc=1&mime=video%2Fmp4&rqh=1&gir=yes&clen=347928&ratebypass=yes&dur=7.709&lmt=1762400311067596&mt=1762399986&fvip=3&fexp=51552689%2C51565116%2C51565682%2C51580968&c=ANDROID&txp=6209224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAPtGqvCQt9K4NN9DZLre0ShuHIYYycbwd8ora028EUrRAiEAhGcv-ntx1WFQ0xpWvZtbD8enU5Kw91tPrwdwgl5zfVU%3D&lsparams=cps%2Cmet%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=APaTxxMwRQIhAOUZP35bGtDWKk39kTPkEsqv90qOLEdrLwcYm9TXN6YKAiBuMzc0zE53JdhbhWfbq9oIQRzxyZGnxav6l1w2N5w4cA%3D%3D&title=copy+FC45223B+782B+4767+BE95+FACC807D6C64" type="video/mp4">
+        <!-- 视频加载失败时显示的备用背景 -->
+        <div style="position: fixed; top:0; left:0; width:100%; height:100%; background: #f0f0f0; z-index:-1;"></div>
+    </video>
+
     <header>
         <h1 id="main-title">NICHOLAS</h1>
         <div class="language-selector">
@@ -130,17 +149,20 @@
         </div>
         <p id="subtitle">Network Security Engineer</p>
     </header>
+    
     <div class="theme-switcher">
         <button id="theme-toggle">🌞</button>
     </div>
+    
     <section id="about">
         <h2 id="about-title">About Nicholas</h2>
-        <!-- Replace with your direct Imgur image URL -->
-        <img src="https://i.imgur.com/your-image-id.jpg" alt="NICHOLAS">
+        <!-- 替换为有效的图片链接（原Flexclip链接无法显示图片） -->
+        <img src="https://via.placeholder.com/400x300?text=Nicholas+Profile" alt="NICHOLAS">
         <p id="bio">I am NICHOLAS, with over 7 years of experience at Dignity for Children. Prior to joining this organization, I served as a network security engineer—a role where I proactively strengthened my professional capabilities by obtaining targeted certifications: <span class="certification">Play It Safe: Manage Security Risks (via Google)</span> deepened my expertise in mitigating security threats, while <span class="certification">Introduction to AI (Google)</span>, <span class="certification">Generative AI: Introduction and Applications (online via IBM)</span>, and <span class="certification">AI for All: From Basics to GenAI Practice (through NVIDIA ACADEMY)</span> equipped me with cutting-edge AI skills to enhance tech-driven problem-solving. Having entered the information technology field at the age of 6 and won numerous major awards, I’ve built a solid technical foundation that, paired with these certifications, continues to support my impactful work at Dignity for Children.</p>
     </section>
+    
     <footer>
-        <p id="copyright">&copy; 2025 Xiaomi Corporation. All rights reserved.</p>
+        <p id="copyright">&copy; 2025 NICHOLAS. All rights reserved.</p>
         <div style="margin-top: 10px;">
             <a href="https://www.instagram.com/nichacker6666?igsh=MTJweHVmZ3FnZ3l4dw%3D%3D&utm_source=qr">
                 By Nicholas
@@ -149,7 +171,7 @@
     </footer>
 
     <script>
-        // Translation dictionary
+        // 翻译字典
         const translations = {
             en: {
                 title: "NICHOLAS",
@@ -157,9 +179,6 @@
                 aboutTitle: "About Nicholas",
                 bio: "I am NICHOLAS, with over 7 years of experience at Dignity for Children. Prior to joining this organization, I served as a network security engineer—a role where I proactively strengthened my professional capabilities by obtaining targeted certifications: <span class='certification'>Play It Safe: Manage Security Risks (via Google)</span> deepened my expertise in mitigating security threats, while <span class='certification'>Introduction to AI (Google)</span>, <span class='certification'>Generative AI: Introduction and Applications (online via IBM)</span>, and <span class='certification'>AI for All: From Basics to GenAI Practice (through NVIDIA ACADEMY)</span> equipped me with cutting-edge AI skills to enhance tech-driven problem-solving. Having entered the information technology field at the age of 6 and won numerous major awards, I’ve built a solid technical foundation that, paired with these certifications, continues to support my impactful work at Dignity for Children.",
                 copyright: "© 2025 NICHOLAS. All rights reserved.",
-                navSu7: "Xiaomi SU7 Ultra",
-                navHome: "Home",
-                navContact: "Contact Us"
             },
             zh: {
                 title: "Nicholas",
@@ -167,9 +186,6 @@
                 aboutTitle: "关于尼古拉斯",
                 bio: "我是Nicholas，在Dignity for Children拥有超过7年的工作经验。加入该机构之前，我担任网络安全工程师一职——在此期间，我通过获取针对性认证积极提升专业能力：<span class='certification'>《安全防护：管理安全风险》（谷歌认证）</span>深化了我缓解安全威胁的专业知识，而<span class='certification'>《人工智能入门》（谷歌认证）</span>、<span class='certification'>《生成式人工智能：入门与应用》（IBM在线认证）</span>以及<span class='certification'>《全民AI：从基础到生成式AI实践》（NVIDIA学院认证）</span>则为我配备了前沿的人工智能技能，助力技术驱动型问题解决。我从6岁起便进入信息技术领域，斩获多项重大奖项，奠定了坚实的技术基础。如今，这些认证与技术功底相辅相成，持续支撑我在Dignity for Children开展富有影响力的工作。",
                 copyright: "© 2025 Nicholas 版权所有",
-                navSu7: "小米SU7 Ultra",
-                navHome: "首页",
-                navContact: "联系我们"
             }
         };
 
@@ -177,42 +193,34 @@
             const language = document.getElementById('language').value;
             const langData = translations[language];
             
-            // Update all text elements (use innerHTML to preserve certification styling)
             document.getElementById('main-title').textContent = langData.title;
             document.getElementById('subtitle').textContent = langData.subtitle;
             document.getElementById('about-title').textContent = langData.aboutTitle;
-            document.getElementById('bio').innerHTML = langData.bio; // Use innerHTML for span styling
+            document.getElementById('bio').innerHTML = langData.bio;
             document.getElementById('copyright').textContent = langData.copyright;
-            
-            // Update HTML lang attribute
             document.documentElement.lang = language;
-            
-            // Update page title
             document.title = language === 'zh' ? 'Nicholas - 网络安全工程师' : 'Nicholas - Network Security Engineer';
         }
 
-        // Initialize language
         document.addEventListener('DOMContentLoaded', function() {
-            // Always default to English instead of browser preference
             document.getElementById('language').value = 'en';
             changeLanguage();
-            
-            // Add event listener for language change
             document.getElementById('language').addEventListener('change', changeLanguage);
         });
 
-        // Theme toggle functionality
+        // 主题切换优化（兼容视频背景）
         document.getElementById('theme-toggle').addEventListener('click', function() {
             const body = document.body;
-            const currentMode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            if (currentMode === 'dark') {
+            const btn = document.getElementById('theme-toggle');
+            
+            if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.classList.add('light-mode');
-                document.getElementById('theme-toggle').textContent = '🌞';
+                btn.textContent = '🌞';
             } else {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
-                document.getElementById('theme-toggle').textContent = '🌙';
+                btn.textContent = '🌙';
             }
         });
     </script>
